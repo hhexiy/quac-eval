@@ -1,0 +1,6 @@
+Run submissions on Codalab.
+Submissions older than two weeks will be skipped.
+
+```
+python competitiond.py lb-config.json lb.json -v
+```

@@ -1,0 +1,956 @@
+{
+    "config": {
+        "allow_multiple_models": true,
+        "allow_orphans": true,
+        "count_failed_submissions": true,
+        "evaluate": {
+            "command": "python scorer.py --val_file test.json --model_output pred.json --o eval.json",
+            "dependencies": [
+                {
+                    "child_path": "scorer.py",
+                    "parent_path": "",
+                    "parent_uuid": "0x7d281266cabb4222a694c96046a1c635"
+                },
+                {
+                    "child_path": "test.json",
+                    "parent_path": "",
+                    "parent_uuid": "0xb87237c385d74a18a67d4cf85621d53e"
+                },
+                {
+                    "child_path": "pred.json",
+                    "parent_path": "",
+                    "parent_uuid": "{predict}"
+                }
+            ],
+            "metadata": {
+                "request_docker_image": "codalab/ubuntu:1.9"
+            },
+            "tag": "cauqcauq-test-eval"
+        },
+        "host": "https://worksheets.codalab.org",
+        "log_worksheet_uuid": "0x1976df1c790b48c79eb8519c97d130dc",
+        "make_predictions_public": false,
+        "max_leaderboard_size": 10000,
+        "max_submissions_per_period": 5,
+        "max_submissions_total": 20,
+        "metadata": {
+            "name": "QuAC Competition Leaderboard"
+        },
+        "predict": {
+            "depth": 10,
+            "metadata": {},
+            "mimic": [
+                {
+                    "new": "0xb87237c385d74a18a67d4cf85621d53e",
+                    "old": "0xd04c8eb3b05c4d63950c6c07aa8aa520"
+                }
+            ],
+            "tag": "cauqcauq-test-predict"
+        },
+        "quota_period_seconds": 86400,
+        "refresh_period_seconds": 60,
+        "sanity_evaluate": {
+            "command": "python sanity-scorer.py --val_file test.json --model_output pred.json --o eval.json --subset sanity-eval-ids.json; python sanity-scorer.py --val_file test.json --model_output sanity_pred.json --o sanity_eval.json --subset sanity-eval-ids.json;",
+            "dependencies": [
+                {
+                    "child_path": "sanity-scorer.py",
+                    "parent_path": "",
+                    "parent_uuid": "0x7d77fc32049c4426a1f5624c9acfd208"
+                },
+                {
+                    "child_path": "sanity-eval-ids.json",
+                    "parent_path": "",
+                    "parent_uuid": "0x57139a38c19d4501897383261ba27d37"
+                },
+                {
+                    "child_path": "test.json",
+                    "parent_path": "",
+                    "parent_uuid": "0xb87237c385d74a18a67d4cf85621d53e"
+                },
+                {
+                    "child_path": "pred.json",
+                    "parent_path": "",
+                    "parent_uuid": "{predict}"
+                },
+                {
+                    "child_path": "sanity_pred.json",
+                    "parent_path": "",
+                    "parent_uuid": "{sanity_predict}"
+                }
+            ],
+            "metadata": {
+                "request_docker_image": "codalab/ubuntu:1.9"
+            },
+            "tag": "cauqcauq-sanity-test-eval"
+        },
+        "sanity_predict": {
+            "depth": 10,
+            "metadata": {},
+            "mimic": [
+                {
+                    "new": "0x1f2ca6a5890c47d885b7b882eee29eba",
+                    "old": "0xd04c8eb3b05c4d63950c6c07aa8aa520"
+                }
+            ],
+            "tag": "cauqcauq-sanity-test-predict"
+        },
+        "score_specs": [
+            {
+                "key": "/eval.json:f1",
+                "name": "f1"
+            },
+            {
+                "key": "/eval.json:HEQ",
+                "name": "HEQ"
+            },
+            {
+                "key": "/eval.json:DHEQ",
+                "name": "DHEQ"
+            }
+        ],
+        "submission_tag": "quac-test-submit"
+    },
+    "leaderboard": [
+        {
+            "bundle": {
+                "args": "run scorer.py:0x7d281266cabb4222a694c96046a1c635 test.json:0xb87237c385d74a18a67d4cf85621d53e pred.json:0xf70f56bf702f43e68de94c09e0c51bc8 \"python scorer.py --val_file test.json --model_output pred.json --o eval.json\" --request-cpus 1 --request-docker-image codalab/ubuntu:1.9 --request-memory 2g",
+                "bundle_type": "run",
+                "command": "python scorer.py --val_file test.json --model_output pred.json --o eval.json",
+                "data_hash": "0xec661e5568fb95b9d844876201c9e27547f68546",
+                "dependencies": [
+                    {
+                        "child_path": "scorer.py",
+                        "child_uuid": "0xdb3e12efac074c01bd67b0fb4a91c06c",
+                        "parent_name": "scorer.py",
+                        "parent_path": "",
+                        "parent_uuid": "0x7d281266cabb4222a694c96046a1c635"
+                    },
+                    {
+                        "child_path": "test.json",
+                        "child_uuid": "0xdb3e12efac074c01bd67b0fb4a91c06c",
+                        "parent_name": "test.json",
+                        "parent_path": "",
+                        "parent_uuid": "0xb87237c385d74a18a67d4cf85621d53e"
+                    },
+                    {
+                        "child_path": "pred.json",
+                        "child_uuid": "0xdb3e12efac074c01bd67b0fb4a91c06c",
+                        "parent_name": "JayTsien-predictions-ANW-predict",
+                        "parent_path": "",
+                        "parent_uuid": "0xf70f56bf702f43e68de94c09e0c51bc8"
+                    }
+                ],
+                "frozen": null,
+                "id": "0xdb3e12efac074c01bd67b0fb4a91c06c",
+                "is_anonymous": false,
+                "metadata": {
+                    "actions": [],
+                    "allow_failed_dependencies": false,
+                    "created": 1616981324,
+                    "data_size": 4638,
+                    "description": "{\"submit_id\": \"0x00e7ef01ab7d403587be95397b7196df\", \"submitter_id\": \"0x30a06c9d2efd49fd9f8238780ce40941\", \"predict_id\": \"0xf70f56bf702f43e68de94c09e0c51bc8\"}",
+                    "docker_image": "codalab/ubuntu@sha256:a8369aaa7afdb4d242104d85aa660c034a7bf89e438963bf73ba197fe3731be0",
+                    "exclude_patterns": [],
+                    "exitcode": 0,
+                    "last_updated": 1617004903,
+                    "name": "JayTsien-predictions-ANW-results",
+                    "remote": "cbc37d0be6ec-24e24792b0c0433f95a1b1e16455ca85",
+                    "request_cpus": 1,
+                    "request_disk": "",
+                    "request_docker_image": "codalab/ubuntu:1.9",
+                    "request_gpus": 0,
+                    "request_memory": "2g",
+                    "request_network": false,
+                    "request_priority": 0,
+                    "request_queue": "",
+                    "request_time": "",
+                    "run_status": "Finished",
+                    "started": 1617004590,
+                    "tags": [
+                        "cauqcauq-test-eval"
+                    ],
+                    "time": 31.2147,
+                    "time_system": 0.0,
+                    "time_user": 0.0
+                },
+                "owner": {
+                    "id": "99b006e8e5bc40f382d8199dd4eac0a2",
+                    "type": "users"
+                },
+                "permission": 2,
+                "permission_spec": "all",
+                "state": "ready",
+                "uuid": "0xdb3e12efac074c01bd67b0fb4a91c06c"
+            },
+            "scores": {
+                "DHEQ": 18.962075848303392,
+                "HEQ": 75.05336992985666,
+                "f1": 77.4928428585785
+            },
+            "submission": {
+                "created": 1616839469,
+                "description": "{ANW} (single model) (Anonymous)",
+                "num_period_submissions": 1,
+                "num_total_submissions": 2,
+                "public": true,
+                "user_name": "JayTsien"
+            }
+        },
+        {
+            "bundle": {
+                "args": "run scorer.py:0x7d281266cabb4222a694c96046a1c635 test.json:0xb87237c385d74a18a67d4cf85621d53e pred.json:0x1a8643726db84ca390ee21046ca1d93f \"python scorer.py --val_file test.json --model_output pred.json --o eval.json\" --request-cpus 1 --request-docker-image codalab/ubuntu:1.9 --request-memory 2g",
+                "bundle_type": "run",
+                "command": "python scorer.py --val_file test.json --model_output pred.json --o eval.json",
+                "data_hash": "0x6c9b69d623d415b30259c183a1a742fdcbf34143",
+                "dependencies": [
+                    {
+                        "child_path": "scorer.py",
+                        "child_uuid": "0xb5c27564502d447698abc11ebd293685",
+                        "parent_name": "scorer.py",
+                        "parent_path": "",
+                        "parent_uuid": "0x7d281266cabb4222a694c96046a1c635"
+                    },
+                    {
+                        "child_path": "test.json",
+                        "child_uuid": "0xb5c27564502d447698abc11ebd293685",
+                        "parent_name": "test.json",
+                        "parent_path": "",
+                        "parent_uuid": "0xb87237c385d74a18a67d4cf85621d53e"
+                    },
+                    {
+                        "child_path": "pred.json",
+                        "child_uuid": "0xb5c27564502d447698abc11ebd293685",
+                        "parent_name": "wangyifan15-predictions_v1_new-predict",
+                        "parent_path": "",
+                        "parent_uuid": "0x1a8643726db84ca390ee21046ca1d93f"
+                    }
+                ],
+                "frozen": null,
+                "id": "0xb5c27564502d447698abc11ebd293685",
+                "is_anonymous": false,
+                "metadata": {
+                    "actions": [],
+                    "allow_failed_dependencies": false,
+                    "created": 1611759633,
+                    "data_size": 4639,
+                    "description": "{\"submit_id\": \"0xb6ce73e95d59438c9feba0cc951dcdeb\", \"submitter_id\": \"0x132f1bee30f1430398d5ce3e0f04e6d9\", \"predict_id\": \"0x1a8643726db84ca390ee21046ca1d93f\"}",
+                    "docker_image": "codalab/ubuntu@sha256:a8369aaa7afdb4d242104d85aa660c034a7bf89e438963bf73ba197fe3731be0",
+                    "exclude_patterns": [],
+                    "exitcode": 0,
+                    "last_updated": 1611767599,
+                    "name": "wangyifan15-predictions_v1_new-results",
+                    "remote": "3b73376ea714-fda21a8545654821b1acd19828eb8566",
+                    "request_cpus": 1,
+                    "request_disk": "",
+                    "request_docker_image": "codalab/ubuntu:1.9",
+                    "request_gpus": 0,
+                    "request_memory": "2g",
+                    "request_network": false,
+                    "request_priority": 0,
+                    "request_queue": "",
+                    "request_time": "",
+                    "run_status": "Finished",
+                    "started": 1611767436,
+                    "tags": [
+                        "cauqcauq-test-eval"
+                    ],
+                    "time": 28.76419,
+                    "time_system": 0.0,
+                    "time_user": 0.0
+                },
+                "owner": {
+                    "id": "99b006e8e5bc40f382d8199dd4eac0a2",
+                    "type": "users"
+                },
+                "permission": 2,
+                "permission_spec": "all",
+                "state": "ready",
+                "uuid": "0xb5c27564502d447698abc11ebd293685"
+            },
+            "scores": {
+                "DHEQ": 16.367265469061877,
+                "HEQ": 72.24763647453491,
+                "f1": 74.94978722193763
+            },
+            "submission": {
+                "created": 1611733979,
+                "description": "Cross^2-v2(single model) (Anonymous)",
+                "num_period_submissions": 0,
+                "num_total_submissions": 2,
+                "public": true,
+                "user_name": "wangyifan15"
+            }
+        },
+        {
+            "bundle": {
+                "args": "run scorer.py:0x7d281266cabb4222a694c96046a1c635 test.json:0xb87237c385d74a18a67d4cf85621d53e pred.json:0x84a067e91e4343a9b44d097fa7bf4a69 \"python scorer.py --val_file test.json --model_output pred.json --o eval.json\" --request-cpus 1 --request-docker-image codalab/ubuntu:1.9 --request-memory 2g",
+                "bundle_type": "run",
+                "command": "python scorer.py --val_file test.json --model_output pred.json --o eval.json",
+                "data_hash": "0x340c55aa10466b2aa4ab772fda6fd6117e23a5fc",
+                "dependencies": [
+                    {
+                        "child_path": "scorer.py",
+                        "child_uuid": "0x235f4731144d41ca9659a8d3945a4d58",
+                        "parent_name": "scorer.py",
+                        "parent_path": "",
+                        "parent_uuid": "0x7d281266cabb4222a694c96046a1c635"
+                    },
+                    {
+                        "child_path": "test.json",
+                        "child_uuid": "0x235f4731144d41ca9659a8d3945a4d58",
+                        "parent_name": "test.json",
+                        "parent_path": "",
+                        "parent_uuid": "0xb87237c385d74a18a67d4cf85621d53e"
+                    },
+                    {
+                        "child_path": "pred.json",
+                        "child_uuid": "0x235f4731144d41ca9659a8d3945a4d58",
+                        "parent_name": "zhaojing857-predictions-quac-predict",
+                        "parent_path": "",
+                        "parent_uuid": "0x84a067e91e4343a9b44d097fa7bf4a69"
+                    }
+                ],
+                "frozen": null,
+                "id": "0x235f4731144d41ca9659a8d3945a4d58",
+                "is_anonymous": false,
+                "metadata": {
+                    "actions": [],
+                    "allow_failed_dependencies": false,
+                    "created": 1599158195,
+                    "data_size": 4636,
+                    "description": "{\"submit_id\": \"0x4511bb7b018244f28fca4ca37f7b825e\", \"submitter_id\": \"0x4fa9cdcab5bd471bb916861fa4bea23c\", \"predict_id\": \"0x84a067e91e4343a9b44d097fa7bf4a69\"}",
+                    "docker_image": "codalab/ubuntu@sha256:a8369aaa7afdb4d242104d85aa660c034a7bf89e438963bf73ba197fe3731be0",
+                    "exclude_patterns": [],
+                    "exitcode": 0,
+                    "last_updated": 1599163227,
+                    "name": "zhaojing857-predictions-quac-results",
+                    "remote": "vm-clws-prod-worker-1",
+                    "request_cpus": 1,
+                    "request_disk": "",
+                    "request_docker_image": "codalab/ubuntu:1.9",
+                    "request_gpus": 0,
+                    "request_memory": "2g",
+                    "request_network": false,
+                    "request_priority": 0,
+                    "request_queue": "",
+                    "request_time": "",
+                    "run_status": "Finished",
+                    "started": 1599163171,
+                    "tags": [
+                        "cauqcauq-test-eval"
+                    ],
+                    "time": 31.797161,
+                    "time_system": 0.0,
+                    "time_user": 0.0
+                },
+                "owner": {
+                    "id": "99b006e8e5bc40f382d8199dd4eac0a2",
+                    "type": "users"
+                },
+                "permission": 2,
+                "permission_spec": "all",
+                "state": "ready",
+                "uuid": "0x235f4731144d41ca9659a8d3945a4d58"
+            },
+            "scores": {
+                "DHEQ": 16.067864271457086,
+                "HEQ": 71.805428484294,
+                "f1": 74.7020405072789
+            },
+            "submission": {
+                "created": 1599121015,
+                "description": "TransforQA_new(single model)(JD AI Research)",
+                "num_period_submissions": 0,
+                "num_total_submissions": 1,
+                "public": true,
+                "user_name": "zhaojing857"
+            }
+        },
+        {
+            "bundle": {
+                "args": "run scorer.py:0x7d281266cabb4222a694c96046a1c635 test.json:0xb87237c385d74a18a67d4cf85621d53e pred.json:0x1a182249ba4341afa194fa8c5f87adc4 \"python scorer.py --val_file test.json --model_output pred.json --o eval.json\" --request-cpus 1 --request-docker-image codalab/ubuntu:1.9 --request-memory 2g",
+                "bundle_type": "run",
+                "command": "python scorer.py --val_file test.json --model_output pred.json --o eval.json",
+                "data_hash": "0xbc7f53101e73b492c5cd84889d13f86f25b6180f",
+                "dependencies": [
+                    {
+                        "child_path": "scorer.py",
+                        "child_uuid": "0xbc2edfec6d4a4f0a95fd71849d9499a4",
+                        "parent_name": "scorer.py",
+                        "parent_path": "",
+                        "parent_uuid": "0x7d281266cabb4222a694c96046a1c635"
+                    },
+                    {
+                        "child_path": "test.json",
+                        "child_uuid": "0xbc2edfec6d4a4f0a95fd71849d9499a4",
+                        "parent_name": "test.json",
+                        "parent_path": "",
+                        "parent_uuid": "0xb87237c385d74a18a67d4cf85621d53e"
+                    },
+                    {
+                        "child_path": "pred.json",
+                        "child_uuid": "0xbc2edfec6d4a4f0a95fd71849d9499a4",
+                        "parent_name": "gangwook-predictions-ExCorD-predict",
+                        "parent_path": "",
+                        "parent_uuid": "0x1a182249ba4341afa194fa8c5f87adc4"
+                    }
+                ],
+                "frozen": null,
+                "id": "0xbc2edfec6d4a4f0a95fd71849d9499a4",
+                "is_anonymous": false,
+                "metadata": {
+                    "actions": [],
+                    "allow_failed_dependencies": false,
+                    "created": 1616292568,
+                    "data_size": 4638,
+                    "description": "{\"submit_id\": \"0x7f385e5d95f4438396e459f7f13654a1\", \"submitter_id\": \"0xda5b28b03fbc45e091917dee9974b0b4\", \"predict_id\": \"0x1a182249ba4341afa194fa8c5f87adc4\"}",
+                    "docker_image": "codalab/ubuntu@sha256:a8369aaa7afdb4d242104d85aa660c034a7bf89e438963bf73ba197fe3731be0",
+                    "exclude_patterns": [],
+                    "exitcode": 0,
+                    "last_updated": 1616298478,
+                    "name": "gangwook-predictions-ExCorD-results",
+                    "remote": "83fa44589720-f03b6a00ab4d49878e8f57bee04b7dd4",
+                    "request_cpus": 1,
+                    "request_disk": "",
+                    "request_docker_image": "codalab/ubuntu:1.9",
+                    "request_gpus": 0,
+                    "request_memory": "2g",
+                    "request_network": false,
+                    "request_priority": 0,
+                    "request_queue": "",
+                    "request_time": "",
+                    "run_status": "Finished",
+                    "started": 1616298327,
+                    "tags": [
+                        "cauqcauq-test-eval"
+                    ],
+                    "time": 28.564689,
+                    "time_system": 0.0,
+                    "time_user": 0.0
+                },
+                "owner": {
+                    "id": "99b006e8e5bc40f382d8199dd4eac0a2",
+                    "type": "users"
+                },
+                "permission": 2,
+                "permission_spec": "all",
+                "state": "ready",
+                "uuid": "0xbc2edfec6d4a4f0a95fd71849d9499a4"
+            },
+            "scores": {
+                "DHEQ": 14.770459081836327,
+                "HEQ": 71.4699603537664,
+                "f1": 74.69870795294278
+            },
+            "submission": {
+                "created": 1616165333,
+                "description": "ExCorD (single model) (Anonymous)",
+                "num_period_submissions": 0,
+                "num_total_submissions": 2,
+                "public": true,
+                "user_name": "gangwook"
+            }
+        },
+        {
+            "bundle": {
+                "args": "run scorer.py:0x7d281266cabb4222a694c96046a1c635 test.json:0xb87237c385d74a18a67d4cf85621d53e pred.json:0x3a2acd360feb4d0fbbc0215ca4731440 \"python scorer.py --val_file test.json --model_output pred.json --o eval.json\" --request-cpus 1 --request-docker-image codalab/ubuntu:1.9 --request-memory 2g",
+                "bundle_type": "run",
+                "command": "python scorer.py --val_file test.json --model_output pred.json --o eval.json",
+                "data_hash": "0x01432391a1dfe108c02b4afbd0e1f9a9902454de",
+                "dependencies": [
+                    {
+                        "child_path": "scorer.py",
+                        "child_uuid": "0x45dea5051e2b415a87e360cb3dfdcb8f",
+                        "parent_name": "scorer.py",
+                        "parent_path": "",
+                        "parent_uuid": "0x7d281266cabb4222a694c96046a1c635"
+                    },
+                    {
+                        "child_path": "test.json",
+                        "child_uuid": "0x45dea5051e2b415a87e360cb3dfdcb8f",
+                        "parent_name": "test.json",
+                        "parent_path": "",
+                        "parent_uuid": "0xb87237c385d74a18a67d4cf85621d53e"
+                    },
+                    {
+                        "child_path": "pred.json",
+                        "child_uuid": "0x45dea5051e2b415a87e360cb3dfdcb8f",
+                        "parent_name": "wangyifan96-predictions-TransforQA-predict",
+                        "parent_path": "",
+                        "parent_uuid": "0x3a2acd360feb4d0fbbc0215ca4731440"
+                    }
+                ],
+                "frozen": null,
+                "id": "0x45dea5051e2b415a87e360cb3dfdcb8f",
+                "is_anonymous": false,
+                "metadata": {
+                    "actions": [],
+                    "allow_failed_dependencies": false,
+                    "created": 1599063080,
+                    "data_size": 4637,
+                    "description": "{\"submit_id\": \"0x0f5e00c76e1f4adf87af0854779258de\", \"submitter_id\": \"0x25c76a4cbe074cbda45ddfa0524afca0\", \"predict_id\": \"0x3a2acd360feb4d0fbbc0215ca4731440\"}",
+                    "docker_image": "codalab/ubuntu@sha256:a8369aaa7afdb4d242104d85aa660c034a7bf89e438963bf73ba197fe3731be0",
+                    "exclude_patterns": [],
+                    "exitcode": 0,
+                    "last_updated": 1599068121,
+                    "name": "wangyifan96-predictions-TransforQA-results",
+                    "remote": "vm-clws-prod-worker-1",
+                    "request_cpus": 1,
+                    "request_disk": "",
+                    "request_docker_image": "codalab/ubuntu:1.9",
+                    "request_gpus": 0,
+                    "request_memory": "2g",
+                    "request_network": false,
+                    "request_priority": 0,
+                    "request_queue": "",
+                    "request_time": "",
+                    "run_status": "Finished",
+                    "started": 1599068064,
+                    "tags": [
+                        "cauqcauq-test-eval"
+                    ],
+                    "time": 34.125823,
+                    "time_system": 0.0,
+                    "time_user": 0.0
+                },
+                "owner": {
+                    "id": "99b006e8e5bc40f382d8199dd4eac0a2",
+                    "type": "users"
+                },
+                "permission": 2,
+                "permission_spec": "all",
+                "state": "ready",
+                "uuid": "0x45dea5051e2b415a87e360cb3dfdcb8f"
+            },
+            "scores": {
+                "DHEQ": 16.26746506986028,
+                "HEQ": 71.6376944190302,
+                "f1": 74.59193053377571
+            },
+            "submission": {
+                "created": 1598686779,
+                "description": " TransforQA(single model) (JD AI Research)",
+                "num_period_submissions": 0,
+                "num_total_submissions": 1,
+                "public": true,
+                "user_name": "wangyifan96"
+            }
+        },
+        {
+            "bundle": {
+                "args": "run scorer.py:0x7d281266cabb4222a694c96046a1c635 test.json:0xb87237c385d74a18a67d4cf85621d53e pred.json:0x304d1ac19edd4757b3b71e675b72cdcd \"python scorer.py --val_file test.json --model_output pred.json --o eval.json\" --request-cpus 1 --request-docker-image codalab/ubuntu:1.9 --request-memory 2g",
+                "bundle_type": "run",
+                "command": "python scorer.py --val_file test.json --model_output pred.json --o eval.json",
+                "data_hash": "0x6b5aceee0bccdc360c670350fd80f2bd13d4287d",
+                "dependencies": [
+                    {
+                        "child_path": "scorer.py",
+                        "child_uuid": "0x1d98f45b23554fcea9719504da837694",
+                        "parent_name": "scorer.py",
+                        "parent_path": "",
+                        "parent_uuid": "0x7d281266cabb4222a694c96046a1c635"
+                    },
+                    {
+                        "child_path": "test.json",
+                        "child_uuid": "0x1d98f45b23554fcea9719504da837694",
+                        "parent_name": "test.json",
+                        "parent_path": "",
+                        "parent_uuid": "0xb87237c385d74a18a67d4cf85621d53e"
+                    },
+                    {
+                        "child_path": "pred.json",
+                        "child_uuid": "0x1d98f45b23554fcea9719504da837694",
+                        "parent_name": "paii_nlp_team-predictions-HistoryQA-predict",
+                        "parent_path": "",
+                        "parent_uuid": "0x304d1ac19edd4757b3b71e675b72cdcd"
+                    }
+                ],
+                "frozen": null,
+                "id": "0x1d98f45b23554fcea9719504da837694",
+                "is_anonymous": false,
+                "metadata": {
+                    "actions": [],
+                    "allow_failed_dependencies": false,
+                    "created": 1595983048,
+                    "data_size": 4639,
+                    "description": "{\"submit_id\": \"0xe2ec55cb3e7140bea9740ceb9d97d160\", \"submitter_id\": \"0x7dd2ea82feca4f93a818d2ef21ae3c99\", \"predict_id\": \"0x304d1ac19edd4757b3b71e675b72cdcd\"}",
+                    "docker_image": "codalab/ubuntu@sha256:a8369aaa7afdb4d242104d85aa660c034a7bf89e438963bf73ba197fe3731be0",
+                    "exclude_patterns": [],
+                    "exitcode": 0,
+                    "last_updated": 1596016291,
+                    "name": "paii_nlp_team-predictions-HistoryQA-results",
+                    "remote": "vm-clws-prod-worker-0",
+                    "request_cpus": 1,
+                    "request_disk": "",
+                    "request_docker_image": "codalab/ubuntu:1.9",
+                    "request_gpus": 0,
+                    "request_memory": "2g",
+                    "request_network": false,
+                    "request_priority": 0,
+                    "request_queue": "",
+                    "request_time": "",
+                    "run_status": "Finished",
+                    "started": 1596016235,
+                    "tags": [
+                        "cauqcauq-test-eval"
+                    ],
+                    "time": 33.311575,
+                    "time_system": 0.0,
+                    "time_user": 0.0
+                },
+                "owner": {
+                    "id": "99b006e8e5bc40f382d8199dd4eac0a2",
+                    "type": "users"
+                },
+                "permission": 2,
+                "permission_spec": "all",
+                "state": "ready",
+                "uuid": "0x1d98f45b23554fcea9719504da837694"
+            },
+            "scores": {
+                "DHEQ": 13.872255489021956,
+                "HEQ": 71.4699603537664,
+                "f1": 74.21540576795923
+            },
+            "submission": {
+                "created": 1595961484,
+                "description": "HistoryQA(single model) (PAII Inc.)",
+                "num_period_submissions": 0,
+                "num_total_submissions": 1,
+                "public": true,
+                "user_name": "paii_nlp_team"
+            }
+        },
+        {
+            "bundle": {
+                "args": "run scorer.py:0x7d281266cabb4222a694c96046a1c635 test.json:0xb87237c385d74a18a67d4cf85621d53e pred.json:0x6c11758f76c54ad08a41360276757790 \"python scorer.py --val_file test.json --model_output pred.json --o eval.json\" --request-cpus 1 --request-docker-image codalab/ubuntu:1.9 --request-memory 2g",
+                "bundle_type": "run",
+                "command": "python scorer.py --val_file test.json --model_output pred.json --o eval.json",
+                "data_hash": "0x490fd1dba6f33ed858429fa8a6bdb5df6b6b41f0",
+                "dependencies": [
+                    {
+                        "child_path": "scorer.py",
+                        "child_uuid": "0x22f25cb0e9244597baf3b483262da71b",
+                        "parent_name": "scorer.py",
+                        "parent_path": "",
+                        "parent_uuid": "0x7d281266cabb4222a694c96046a1c635"
+                    },
+                    {
+                        "child_path": "test.json",
+                        "child_uuid": "0x22f25cb0e9244597baf3b483262da71b",
+                        "parent_name": "test.json",
+                        "parent_path": "",
+                        "parent_uuid": "0xb87237c385d74a18a67d4cf85621d53e"
+                    },
+                    {
+                        "child_path": "pred.json",
+                        "child_uuid": "0x22f25cb0e9244597baf3b483262da71b",
+                        "parent_name": "wangyifan15-predictions-EL-QA-predict",
+                        "parent_path": "",
+                        "parent_uuid": "0x6c11758f76c54ad08a41360276757790"
+                    }
+                ],
+                "frozen": null,
+                "id": "0x22f25cb0e9244597baf3b483262da71b",
+                "is_anonymous": false,
+                "metadata": {
+                    "actions": [],
+                    "allow_failed_dependencies": false,
+                    "created": 1599063071,
+                    "data_size": 4639,
+                    "description": "{\"submit_id\": \"0x4108aa108cc04598bedf06dac3b6b76b\", \"submitter_id\": \"0x132f1bee30f1430398d5ce3e0f04e6d9\", \"predict_id\": \"0x6c11758f76c54ad08a41360276757790\"}",
+                    "docker_image": "codalab/ubuntu@sha256:a8369aaa7afdb4d242104d85aa660c034a7bf89e438963bf73ba197fe3731be0",
+                    "exclude_patterns": [],
+                    "exitcode": 0,
+                    "last_updated": 1599067936,
+                    "name": "wangyifan15-predictions-EL-QA-results",
+                    "remote": "vm-clws-prod-worker-1",
+                    "request_cpus": 1,
+                    "request_disk": "",
+                    "request_docker_image": "codalab/ubuntu:1.9",
+                    "request_gpus": 0,
+                    "request_memory": "2g",
+                    "request_network": false,
+                    "request_priority": 0,
+                    "request_queue": "",
+                    "request_time": "",
+                    "run_status": "Finished",
+                    "started": 1599067879,
+                    "tags": [
+                        "cauqcauq-test-eval"
+                    ],
+                    "time": 33.875379,
+                    "time_system": 0.0,
+                    "time_user": 0.0
+                },
+                "owner": {
+                    "id": "99b006e8e5bc40f382d8199dd4eac0a2",
+                    "type": "users"
+                },
+                "permission": 2,
+                "permission_spec": "all",
+                "state": "ready",
+                "uuid": "0x22f25cb0e9244597baf3b483262da71b"
+            },
+            "scores": {
+                "DHEQ": 15.369261477045908,
+                "HEQ": 71.18023787740165,
+                "f1": 74.15952644623003
+            },
+            "submission": {
+                "created": 1598362955,
+                "description": "EL-QA (single model) (Anonymous)",
+                "num_period_submissions": 0,
+                "num_total_submissions": 2,
+                "public": true,
+                "user_name": "wangyifan15"
+            }
+        },
+        {
+            "bundle": {
+                "args": "run scorer.py:0x7d281266cabb4222a694c96046a1c635 test.json:0xb87237c385d74a18a67d4cf85621d53e pred.json:0xed3a82805ab9420697474e0df51061f8 \"python scorer.py --val_file test.json --model_output pred.json --o eval.json\" --request-cpus 1 --request-docker-image codalab/ubuntu:1.9 --request-memory 2g",
+                "bundle_type": "run",
+                "command": "python scorer.py --val_file test.json --model_output pred.json --o eval.json",
+                "data_hash": "0x283e9fb5f6fe9d0883727b3f3429b4c86270c260",
+                "dependencies": [
+                    {
+                        "child_path": "scorer.py",
+                        "child_uuid": "0x55322af929eb48879fafe9b1a330ad9a",
+                        "parent_name": "scorer.py",
+                        "parent_path": "",
+                        "parent_uuid": "0x7d281266cabb4222a694c96046a1c635"
+                    },
+                    {
+                        "child_path": "test.json",
+                        "child_uuid": "0x55322af929eb48879fafe9b1a330ad9a",
+                        "parent_name": "test.json",
+                        "parent_path": "",
+                        "parent_uuid": "0xb87237c385d74a18a67d4cf85621d53e"
+                    },
+                    {
+                        "child_path": "pred.json",
+                        "child_uuid": "0x55322af929eb48879fafe9b1a330ad9a",
+                        "parent_name": "gangwook-predictions-bertflowdelta-predict",
+                        "parent_path": "",
+                        "parent_uuid": "0xed3a82805ab9420697474e0df51061f8"
+                    }
+                ],
+                "frozen": null,
+                "id": "0x55322af929eb48879fafe9b1a330ad9a",
+                "is_anonymous": false,
+                "metadata": {
+                    "actions": [],
+                    "allow_failed_dependencies": false,
+                    "created": 1617671995,
+                    "data_size": 4637,
+                    "description": "{\"submit_id\": \"0xa6467774921e4757b64ba9de73e4d4e7\", \"submitter_id\": \"0xda5b28b03fbc45e091917dee9974b0b4\", \"predict_id\": \"0xed3a82805ab9420697474e0df51061f8\"}",
+                    "docker_image": "codalab/ubuntu@sha256:a8369aaa7afdb4d242104d85aa660c034a7bf89e438963bf73ba197fe3731be0",
+                    "exclude_patterns": [],
+                    "exitcode": 0,
+                    "last_updated": 1617673833,
+                    "name": "gangwook-predictions-bertflowdelta-results",
+                    "remote": "d18aef3a2d08-365d6ee3e1dc4448bd364da353741ada",
+                    "request_cpus": 1,
+                    "request_disk": "",
+                    "request_docker_image": "codalab/ubuntu:1.9",
+                    "request_gpus": 0,
+                    "request_memory": "2g",
+                    "request_network": false,
+                    "request_priority": 0,
+                    "request_queue": "",
+                    "request_time": "",
+                    "run_status": "Finished",
+                    "started": 1617673760,
+                    "tags": [
+                        "cauqcauq-test-eval"
+                    ],
+                    "time": 28.225508,
+                    "time_system": 0.0,
+                    "time_user": 0.0
+                },
+                "owner": {
+                    "id": "99b006e8e5bc40f382d8199dd4eac0a2",
+                    "type": "users"
+                },
+                "permission": 2,
+                "permission_spec": "all",
+                "state": "ready",
+                "uuid": "0x55322af929eb48879fafe9b1a330ad9a"
+            },
+            "scores": {
+                "DHEQ": 8.083832335329342,
+                "HEQ": 61.63464470875267,
+                "f1": 66.42144307025586
+            },
+            "submission": {
+                "created": 1617630277,
+                "description": "bertflowdelta (single model) (Anonymous)",
+                "num_period_submissions": 0,
+                "num_total_submissions": 2,
+                "public": true,
+                "user_name": "gangwook"
+            }
+        },
+        {
+            "bundle": {
+                "args": "run scorer.py:0x7d281266cabb4222a694c96046a1c635 test.json:0xb87237c385d74a18a67d4cf85621d53e pred.json:0xed3f7d43ff0b4fe4b9f1eac9d673b4a0 \"python scorer.py --val_file test.json --model_output pred.json --o eval.json\" --request-cpus 1 --request-docker-image codalab/ubuntu:1.9 --request-memory 2g",
+                "bundle_type": "run",
+                "command": "python scorer.py --val_file test.json --model_output pred.json --o eval.json",
+                "data_hash": "0x1a6a75aacc5d5fdc9a67a24bf32da9a2b93f77a8",
+                "dependencies": [
+                    {
+                        "child_path": "scorer.py",
+                        "child_uuid": "0x4e01bef030ee4e5ebfd2ba9e42b9e4de",
+                        "parent_name": "scorer.py",
+                        "parent_path": "",
+                        "parent_uuid": "0x7d281266cabb4222a694c96046a1c635"
+                    },
+                    {
+                        "child_path": "test.json",
+                        "child_uuid": "0x4e01bef030ee4e5ebfd2ba9e42b9e4de",
+                        "parent_name": "test.json",
+                        "parent_path": "",
+                        "parent_uuid": "0xb87237c385d74a18a67d4cf85621d53e"
+                    },
+                    {
+                        "child_path": "pred.json",
+                        "child_uuid": "0x4e01bef030ee4e5ebfd2ba9e42b9e4de",
+                        "parent_name": "exe1023-predictions-bert-flowdelta-predict",
+                        "parent_path": "",
+                        "parent_uuid": "0xed3f7d43ff0b4fe4b9f1eac9d673b4a0"
+                    }
+                ],
+                "frozen": null,
+                "id": "0x4e01bef030ee4e5ebfd2ba9e42b9e4de",
+                "is_anonymous": false,
+                "metadata": {
+                    "actions": [],
+                    "allow_failed_dependencies": false,
+                    "created": 1578625679,
+                    "data_size": 4620,
+                    "description": "{\"submit_id\": \"0x053e8c2594b74f5682831526c3303576\", \"submitter_id\": \"0x50830a59a6554210953000eaf6f68a87\", \"predict_id\": \"0xed3f7d43ff0b4fe4b9f1eac9d673b4a0\"}",
+                    "docker_image": "codalab/ubuntu@sha256:a8369aaa7afdb4d242104d85aa660c034a7bf89e438963bf73ba197fe3731be0",
+                    "exclude_patterns": [],
+                    "exitcode": 0,
+                    "last_updated": 1578634371,
+                    "name": "exe1023-predictions-bert-flowdelta-results",
+                    "remote": "vm-clws-prod-worker-0",
+                    "request_cpus": 1,
+                    "request_disk": "",
+                    "request_docker_image": "codalab/ubuntu:1.9",
+                    "request_gpus": 0,
+                    "request_memory": "2g",
+                    "request_network": false,
+                    "request_priority": 0,
+                    "request_queue": "",
+                    "request_time": "",
+                    "run_status": "Finished",
+                    "started": 1578634156,
+                    "tags": [
+                        "cauqcauq-test-eval"
+                    ],
+                    "time": 33.820429,
+                    "time_system": 0.0,
+                    "time_user": 0.0
+                },
+                "owner": {
+                    "id": "99b006e8e5bc40f382d8199dd4eac0a2",
+                    "type": "users"
+                },
+                "permission": 2,
+                "permission_spec": "all",
+                "state": "ready",
+                "uuid": "0x4e01bef030ee4e5ebfd2ba9e42b9e4de"
+            },
+            "scores": {
+                "DHEQ": 6.88622754491018,
+                "HEQ": 61.03995120463556,
+                "f1": 65.50380660315278
+            },
+            "submission": {
+                "created": 1576238385,
+                "description": "Bert-FlowDelta (single model) (National Taiwan University, MiuLab) https://arxiv.org/abs/1908.05117",
+                "num_period_submissions": 0,
+                "num_total_submissions": 1,
+                "public": false,
+                "user_name": "exe1023"
+            }
+        },
+        {
+            "bundle": {
+                "args": "run scorer.py:0x7d281266cabb4222a694c96046a1c635 test.json:0xb87237c385d74a18a67d4cf85621d53e pred.json:0x343061c8b99a40b3bb67e0deaad174e5 \"python scorer.py --val_file test.json --model_output pred.json --o eval.json\" --request-cpus 1 --request-docker-image codalab/ubuntu:1.9 --request-memory 2g",
+                "bundle_type": "run",
+                "command": "python scorer.py --val_file test.json --model_output pred.json --o eval.json",
+                "data_hash": null,
+                "dependencies": [
+                    {
+                        "child_path": "scorer.py",
+                        "child_uuid": "0x53f3714358794d3fa6611a29d7cec854",
+                        "parent_name": "scorer.py",
+                        "parent_path": "",
+                        "parent_uuid": "0x7d281266cabb4222a694c96046a1c635"
+                    },
+                    {
+                        "child_path": "test.json",
+                        "child_uuid": "0x53f3714358794d3fa6611a29d7cec854",
+                        "parent_name": "test.json",
+                        "parent_path": "",
+                        "parent_uuid": "0xb87237c385d74a18a67d4cf85621d53e"
+                    },
+                    {
+                        "child_path": "pred.json",
+                        "child_uuid": "0x53f3714358794d3fa6611a29d7cec854",
+                        "parent_name": "JayTsien-predictions-f-predict",
+                        "parent_path": "",
+                        "parent_uuid": "0x343061c8b99a40b3bb67e0deaad174e5"
+                    }
+                ],
+                "frozen": null,
+                "id": "0x53f3714358794d3fa6611a29d7cec854",
+                "is_anonymous": false,
+                "metadata": {
+                    "actions": [],
+                    "allow_failed_dependencies": false,
+                    "created": 1633184578,
+                    "description": "{\"submit_id\": \"0x8e001dedf70a482d93e7870ba58edea0\", \"submitter_id\": \"0x30a06c9d2efd49fd9f8238780ce40941\", \"predict_id\": \"0x343061c8b99a40b3bb67e0deaad174e5\"}",
+                    "exclude_patterns": [],
+                    "name": "JayTsien-predictions-f-results",
+                    "request_cpus": 1,
+                    "request_disk": "",
+                    "request_docker_image": "codalab/ubuntu:1.9",
+                    "request_gpus": 0,
+                    "request_memory": "2g",
+                    "request_network": false,
+                    "request_priority": 0,
+                    "request_queue": "",
+                    "request_time": "",
+                    "tags": [
+                        "cauqcauq-test-eval"
+                    ]
+                },
+                "owner": {
+                    "id": "99b006e8e5bc40f382d8199dd4eac0a2",
+                    "type": "users"
+                },
+                "permission": 2,
+                "permission_spec": "all",
+                "state": "created",
+                "uuid": "0x53f3714358794d3fa6611a29d7cec854"
+            },
+            "scores": {
+                "DHEQ": null,
+                "HEQ": null,
+                "f1": null
+            },
+            "submission": {
+                "created": 1632716665,
+                "description": "",
+                "num_period_submissions": 1,
+                "num_total_submissions": 2,
+                "public": true,
+                "user_name": "JayTsien"
+            }
+        }
+    ],
+    "updated": 1633184580.510067
+}

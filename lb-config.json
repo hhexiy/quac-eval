@@ -1,0 +1,100 @@
+{
+    "username": "hhe",
+    "password": "codalabhehe",
+    "max_submissions_per_period": 5,
+    "max_submissions_total": 20,
+    "host": "https://worksheets.codalab.org",
+    "submission_tag": "quac-test-submit",
+    "log_worksheet_uuid": "0x1976df1c790b48c79eb8519c97d130dc",
+    "allow_multiple_models": true,
+    "predict": {
+        "mimic": [
+            {
+                "old": "0xd04c8eb3b05c4d63950c6c07aa8aa520",
+                "new": "0xb87237c385d74a18a67d4cf85621d53e"
+            }
+        ],
+        "depth": 10,
+        "tag": "cauqcauq-test-predict"
+    },
+    "sanity_predict": {
+        "mimic": [
+            {
+                "old": "0xd04c8eb3b05c4d63950c6c07aa8aa520",
+                "new": "0x1f2ca6a5890c47d885b7b882eee29eba"
+            }
+        ],
+        "depth": 10,
+        "tag": "cauqcauq-sanity-test-predict"
+    },
+    "sanity_evaluate": {
+        "dependencies": [
+            {
+                "parent_uuid": "0x7d77fc32049c4426a1f5624c9acfd208",
+                "child_path": "sanity-scorer.py"
+            },
+            {
+                "parent_uuid": "0x57139a38c19d4501897383261ba27d37",
+                "child_path": "sanity-eval-ids.json"
+            },
+            {
+                "parent_uuid": "0xb87237c385d74a18a67d4cf85621d53e",
+                "child_path": "test.json"
+            },
+            {
+                "parent_uuid": "{predict}",
+                "parent_path": "",
+                "child_path": "pred.json"
+            },
+            {
+                "parent_uuid": "{sanity_predict}",
+                "parent_path": "",
+                "child_path": "sanity_pred.json"
+            }
+        ],
+        "command": "python sanity-scorer.py --val_file test.json --model_output pred.json --o eval.json --subset sanity-eval-ids.json; python sanity-scorer.py --val_file test.json --model_output sanity_pred.json --o sanity_eval.json --subset sanity-eval-ids.json;",
+        "metadata": {
+          "request_docker_image": "codalab/ubuntu:1.9"
+        },
+        "tag": "cauqcauq-sanity-test-eval"
+    },
+    "evaluate": {
+        "dependencies": [
+            {
+                "parent_uuid": "0x7d281266cabb4222a694c96046a1c635",
+                "child_path": "scorer.py"
+            },
+            {
+                "parent_uuid": "0xb87237c385d74a18a67d4cf85621d53e",
+                "child_path": "test.json"
+            },
+            {
+                "parent_uuid": "{predict}",
+                "parent_path": "",
+                "child_path": "pred.json"
+            }
+        ],
+        "command": "python scorer.py --val_file test.json --model_output pred.json --o eval.json",
+        "metadata": {
+          "request_docker_image": "codalab/ubuntu:1.9"
+        },
+        "tag": "cauqcauq-test-eval"
+    },
+    "score_specs": [
+        {
+            "name": "f1",
+            "key": "/eval.json:f1"
+        },
+        {
+            "name": "HEQ",
+            "key": "/eval.json:HEQ"
+        },
+        {
+            "name": "DHEQ",
+            "key": "/eval.json:DHEQ"
+        }
+    ],
+    "metadata": {
+        "name": "QuAC Competition Leaderboard"
+    }
+}
