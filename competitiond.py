@@ -390,7 +390,7 @@ class Competition(object):
         for key, bundle in list(submissions.items()):
             # Drop old submission
             days_since_created = (time.time() - bundle['metadata']['created']) / 3600 / 24
-            if days_since_created > 16: #and bundle['owner']['user_name'] != 'nadavo':
+            if days_since_created > 16 and bundle['owner']['user_name'] != 'hgtcwl':
                 logger.debug('Skip submission older than two weeks created by {owner[user_name]}'.format(**bundle))
                 del submissions[key]
                 continue
